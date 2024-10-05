@@ -3,64 +3,68 @@
     <!-- Show the dashboard -->
     <div>
       <div v-if="$route.name !== 'thaiMedicine'" class="hospital-dashboard">
-       <!-- <div v-if="$route.name !== 'chatBot'" class="hospital-dashboard">
-        
-    
-        <ChatWindow v-if="isChatOpen" @close-chat="isChatOpen = false" :isOpen="isChatOpen" /> -->
+      <!-- <div v-if="$route.name !== 'chatBot'" class="hospital-dashboard">
+      <ChatWindow v-if="isChatOpen" @close-chat="isChatOpen = false" :isOpen="isChatOpen" /> -->
       <!-- Header Section -->
-      <header class="header">
-        <div class="logo">
-          <img alt="Mfu Logo" src="./assets/Hospital.png" />
-        </div>
-        <div class="search-lang">
-          <input type="text" class="search-bar" :placeholder="translations[currentLang].searchPlaceholder" />
-          <div>
-            <ChatBubble @open-chat="isChatOpen = true" />
+        <header class="header">
+          <div class="logo">
+            <img alt="Mfu Logo" src="./assets/Hospital.png" />
           </div>
-          <div class="lang-switch">
-            <div class="lang-dropdown" @click="toggleLanguageDropdown">
-              <span>{{ currentLang }}</span>
-              <img
-                :src="showLanguageDropdown ? require('@/assets/up_arr.png') : require('@/assets/down_arr.png')"
-                alt="Dropdown Arrow Icon"
-                class="down-arrow"
-              />
-            </div>
-            <!-- Language Dropdown Menu -->
-            <div v-if="showLanguageDropdown" class="dropdown-menu">
-              <button v-if="currentLang !== 'EN'" @click="setLanguage('EN')" class="dropdown-item">
-                <img src="./assets/uk.png" alt="English Icon" class="dropdown-icon" /> EN
-              </button>
-              <button v-if="currentLang !== 'ไทย'" @click="setLanguage('ไทย')" class="dropdown-item">
-                <img src="./assets/th.png" alt="Thai Icon" class="dropdown-icon" /> ไทย
-              </button>
-              <button v-if="currentLang !== 'မြန်မာ'" @click="setLanguage('မြန်မာ')" class="dropdown-item">
-                <img src="./assets/mm.png" alt="Myanmar Icon" class="dropdown-icon" /> မြန်မာ
-              </button>
+          <div class="search-lang">
+            <input type="text" class="search-bar" :placeholder="translations[currentLang].searchPlaceholder" />
+            
+            <div>
+              <ChatBubble @open-chat="isChatOpen = true" />
             </div>
 
-            <!-- Profile Dropdown -->
-            <div class="profile-container" @click="toggleProfileDropdown">
-              <img src="./assets/profile.png" alt="Profile Icon" />
-              <img
-                :src="showProfileDropdown ? require('@/assets/up_arr.png') : require('@/assets/down_arr.png')"
-                alt="Dropdown Arrow Icon"
-                class="down-arrow"
-              />
-            </div>
-            <div v-if="showProfileDropdown" class="dropdown-menu">
-              <button class="dropdown-item" @click="openLoginForm">
-                <img src="./assets/profile.png" alt="Login Logo" class="dropdown-icon" />
-                {{ translations[currentLang].login }}
-              </button>
-              <button class="dropdown-item" @click="openCreateAccountForm">
-                <img src="./assets/create-acc.png" alt="Create Account Icon" class="dropdown-icon" />
-                {{ translations[currentLang].createAccount }}
-              </button>
+            <div class="lang-switch">
+
+              <div class="lang-dropdown" @click="toggleLanguageDropdown">
+                <span>{{ currentLang }}</span>
+                <img
+                  :src="showLanguageDropdown ? require('@/assets/up_arr.png') : require('@/assets/down_arr.png')"
+                  alt="Dropdown Arrow Icon"
+                  class="down-arrow"
+                />
+              </div>
+
+              <!-- Language Dropdown Menu -->
+              <div v-if="showLanguageDropdown" class="dropdown-menu">
+                <button v-if="currentLang !== 'EN'" @click="setLanguage('EN')" class="dropdown-item">
+                  <img src="./assets/uk.png" alt="English Icon" class="dropdown-icon" /> EN
+                </button>
+                <button v-if="currentLang !== 'ไทย'" @click="setLanguage('ไทย')" class="dropdown-item">
+                  <img src="./assets/th.png" alt="Thai Icon" class="dropdown-icon" /> ไทย
+                </button>
+                <button v-if="currentLang !== 'မြန်မာ'" @click="setLanguage('မြန်မာ')" class="dropdown-item">
+                  <img src="./assets/mm.png" alt="Myanmar Icon" class="dropdown-icon" /> မြန်မာ
+                </button>
+              </div>
+
+              <!-- Profile Dropdown -->
+              <div class="profile-container" @click="toggleProfileDropdown">
+                <img src="./assets/profile.png" alt="Profile Icon" />
+                <img
+                  :src="showProfileDropdown ? require('@/assets/up_arr.png') : require('@/assets/down_arr.png')"
+                  alt="Dropdown Arrow Icon"
+                  class="down-arrow"
+                />
+              </div>
+
+              <div v-if="showProfileDropdown" class="dropdown-menu">
+                <button class="dropdown-item" @click="openLoginForm">
+                  <img src="./assets/profile.png" alt="Login Logo" class="dropdown-icon" />
+                  {{ translations[currentLang].login }}
+                </button>
+                <button class="dropdown-item" @click="openCreateAccountForm">
+                  <img src="./assets/create-acc.png" alt="Create Account Icon" class="dropdown-icon" />
+                  {{ translations[currentLang].createAccount }}
+                </button>
+
             </div>
           </div>
-        </div>
-      </header>
+      </div>
+        </header>
 
       <!-- Navigation Section -->
       <nav class="nav-tabs">
@@ -78,14 +82,14 @@
           </button>
         </router-link>
         <button class="dropdown-item" @click="selectDoctorDepartment(translations[currentLang].departments.chineseMedicine)">
-    {{ translations[currentLang].departments.chineseMedicine }}
-  </button>
-  <button class="dropdown-item" @click="selectDoctorDepartment(translations[currentLang].departments.physicalTherapy)">
-    {{ translations[currentLang].departments.physicalTherapy }}
-  </button>
-  <button class="dropdown-item" @click="selectDoctorDepartment(translations[currentLang].departments.outpatientClinic)">
-    {{ translations[currentLang].departments.outpatientClinic }}
-  </button>
+          {{ translations[currentLang].departments.chineseMedicine }}
+        </button>
+        <button class="dropdown-item" @click="selectDoctorDepartment(translations[currentLang].departments.physicalTherapy)">
+          {{ translations[currentLang].departments.physicalTherapy }}
+        </button>
+        <button class="dropdown-item" @click="selectDoctorDepartment(translations[currentLang].departments.outpatientClinic)">
+          {{ translations[currentLang].departments.outpatientClinic }}
+        </button>
       </div>
       </nav>
 
@@ -116,14 +120,14 @@
       </footer>
       
       <ChatWindow v-if="isChatOpen" @close-chat="isChatOpen = false" :isOpen="isChatOpen" />
-    </div>
+      </div>
     </div>
     <router-view></router-view>
     <!-- Login form as pop-up modal -->
     <LogIn v-if="showLoginForm" @close="showLoginForm = false" :currentLang="currentLang" />
     <CreateAcc v-if="showCreateAccountForm" @close="showCreateAccountForm = false" :currentLang="currentLang" />
   
-</div>
+  </div>
 </template>
 
 <script>
